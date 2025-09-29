@@ -14,7 +14,8 @@ export default function Github() {
         throw new Error("User not found");
       }
       const result = await response.json();
-      setData(result.items);
+        const filteredItems = result.items.filter(  user => user.login.toLowerCase().includes(search.toLowerCase()));
+      setData(filteredItems);
       console.log(result.items);
     } catch (error) {
       console.error(error);
