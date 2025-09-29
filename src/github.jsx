@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import './github.css';
+
 export default function Github() {
   const [data, setData] = useState(null);
   const [search, setSearch] = useState('');
@@ -33,17 +35,18 @@ export default function Github() {
         value={search}
       />
       <button onClick={fetchData}>Search</button>
-
+      <div className='user-card'>
       {data && (
         data.map((user)=>{
             return (
-                <div key={user.id}>
+                <div key={user.id} >
                     <img src={user.avatar_url} alt={user.login} width="50" />
                     <a href={user.html_url} target="_blank" rel="noopener noreferrer">{user.login}</a>
                 </div>
             )
         })
       )}
+      </div>
     </>
   );
 }
